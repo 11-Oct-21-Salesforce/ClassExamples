@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>First HTML Page</title>
+        <style>
+            h3.tablesAndLists {
+                color:indigo;
+            }
+            h3 {
+                color: red;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="basic.css"></link>
+    </head>
+    <body>
+        <h1>This Is Our First HTML Page</h1>
+
+        <h3>Block-Level and Inline Elements</h3>
+        The following is a block-level element,<div>so it has implicit newlines before and after</div>
+
+        The following is an inline element, <span>so it renders on the same line and only takes the space it needs</span>
+        <br/>
+
+        <h3>Hyperlinks and Images</h3>
+        This is a link to <a href="https://github.com/" target="_blank">Github</a>
+        <br/>
+        
+        <img src="github_logo.png" alt="Github Logo" style="height:30px;width:30px">
+        <br/>
+
+        <h3 class="tablesAndLists">Tables and Lists</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Team Name</th>
+                    <th>Squad Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Alchemy</td>
+                    <td>Codeforce</td>
+                </tr>
+                <tr>
+                    <td>Amplifire</td>
+                    <td>Rogue Squadron</td>
+                </tr>
+                <tr>
+                    <td>Synergy</td>
+                    <td>Team Seven</td>
+                </tr>
+                <tr>
+                    <td>Vanquish</td>
+                    <td>Vanquishing America's Llama Undead Empire</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- the ol element renders an ordered list and the ul element renders an unordered list -->
+        <ol reversed>
+            <li>First Item</li>
+            <li>Second Item</li>
+            <li>Third Item</li>
+        </ol>
+
+        <ul>
+            <li>First Item</li>
+            <li>Second Item</li>
+            <li>Third Item</li>
+        </ul>
+    </body>
+</html>
