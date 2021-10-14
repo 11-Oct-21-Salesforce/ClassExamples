@@ -16,5 +16,17 @@ class Home {
     }
 }
 
+class Apartment extends Home {
+    leaseLength;
+
+    constructor(leaseLength, numberOfBedrooms, monthlyCost, numberOfBathrooms, sqFootage) {
+        super(numberOfBedrooms, monthlyCost, numberOfBathrooms, sqFootage);
+        this.leaseLength = leaseLength;
+    }
+}
+
 let marioHotel = new Home(20, 50, 20, 40000);
 console.log(marioHotel.calcCostPerSqFoot());
+
+let marioApartment = new Apartment(13, 20, 50, 20, 40000);
+console.log(marioApartment.calcCostPerSqFoot());
