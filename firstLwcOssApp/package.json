@@ -1,0 +1,44 @@
+{
+    "name": "firstLwcOssApp",
+    "version": "0.0.1",
+    "author": "Ben",
+    "bugs": "https://github.com/Ben/firstLwcOssApp/issues",
+    "dependencies": {
+        "compression": "^1.7.4",
+        "express": "^4.17.1",
+        "helmet": "^4.6.0"
+    },
+    "devDependencies": {
+        "eslint": "^8.0.1",
+        "eslint-plugin-inclusive-language": "^2.1.1",
+        "husky": "^7.0.2",
+        "lwc-services": "^3.2.2",
+        "prettier": "^2.4.1"
+    },
+    "engines": {
+        "node": ">=10.13.0",
+        "npm": ">=6.4.1",
+        "yarn": ">=1.9.4"
+    },
+    "homepage": "https://github.com/Ben/firstLwcOssApp",
+    "keywords": [
+        "lwc"
+    ],
+    "license": "MIT",
+    "repository": "Ben/firstLwcOssApp",
+    "scripts": {
+        "build": "lwc-services build -m production",
+        "build:development": "lwc-services build",
+        "lint": "eslint ./src/**/*.js",
+        "postinstall": "husky install",
+        "precommit": "npm run prettier:verify && [ $? -eq 0 ] && npm run lint",
+        "prettier": "prettier --write \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+        "prettier:verify": "prettier --list-different \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+        "start": "node scripts/server.js",
+        "test:unit": "lwc-services test:unit",
+        "test:unit:coverage": "lwc-services test:unit --coverage",
+        "test:unit:debug": "lwc-services test:unit --debug",
+        "test:unit:watch": "lwc-services test:unit --watch",
+        "watch": "lwc-services watch"
+    }
+}

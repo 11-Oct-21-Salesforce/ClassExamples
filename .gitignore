@@ -1,0 +1,15 @@
+**/logs
+**/*.log
+**/*-debug.log
+**/*-error.log
+**/lib
+**/dist
+**/node_modules
+**/tmp
+**/coverage
+**/.DS_Store
+**/Thumbs.db
+**/ehthumbs.db
+**/[Dd]esktop.ini
+**/$RECYCLE.BIN/
+**/.husky
