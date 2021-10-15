@@ -6,7 +6,8 @@
     "dependencies": {
         "compression": "^1.7.4",
         "express": "^4.17.1",
-        "helmet": "^4.6.0"
+        "helmet": "^4.6.0",
+        "lightning-base-components": "^1.13.7-alpha"
     },
     "devDependencies": {
         "eslint": "^8.0.1",
