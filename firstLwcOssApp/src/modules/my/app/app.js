@@ -20,4 +20,8 @@ export default class App extends LightningElement {
             squadName: 'Vanquishing America\'s Llama Undead Empire'
         }
     ]
+
+    changeDisplay() {
+        this.displayMarkup = !this.displayMarkup;
+    }
 }
