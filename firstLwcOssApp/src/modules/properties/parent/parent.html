@@ -1,0 +1,18 @@
+<template>
+    <!-- 
+        Publicly exposed properties become attributes that we can set when we instantiate the
+        component that holds them. The name of the property changes from camelcase to kebab case
+        (e.g. childPublicProperty becomes child-public-property). The value that we assign to
+        the attribute will be assigned to the property in the child component's JS module.
+        Accessor properties appear like regular properties to parent components, so the name of
+        the exposed accessor method is used as an attribute on the child component and it changes
+        from camelcase to kebab case. Whenever a value is assigned to the event attribute
+        corresponding to an accessor property, the setter method is invoked.
+
+        We use public properties to communicate and pass information from parent components
+        to children components.        
+    -->
+    <properties-child child-public-property="Happy Friday" 
+        public-accessor-property="It's Almost the Weekend">
+    </properties-child>
+</template>

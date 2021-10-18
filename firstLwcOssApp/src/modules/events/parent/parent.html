@@ -1,0 +1,14 @@
+<template>
+    <!-- Data binding a counter of how many events have been handled. -->
+    Event Occurences: {numberOfEvents}
+    <br/>
+
+    <!-- 
+        We instantiate the child component. To handle a custom event fired by the child, we
+        action bind an event listener from our JS module to the corresponding event attribute on
+        the instantiation of the child component. The event attribute is the name of the custom
+        event (i.e. the value passed as the first argument to the CustomEvent constructor in the
+        child component) prefixed with on.
+    -->
+    <events-child onbuttonclick={handleButtonClick}></events-child>
+</template>

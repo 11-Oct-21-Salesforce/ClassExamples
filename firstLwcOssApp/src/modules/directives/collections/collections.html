@@ -1,0 +1,44 @@
+<template>
+    <!--
+        Template directives use template tags with special attributes.
+
+        The for:each template directive allows us to render markup for each item in a collection.
+        We data bind the collection to iterate through using curly braces surrounding the name
+        of the collection variable in our component's JS module. We pass a string to the for:item
+        attribute that will serve as a variable name for the current item in the collection.
+    -->
+    <template for:each={teams} for:item="team">
+        <!-- 
+            Every outer tag inside the for:each template directive must have a key attribute
+            bound to a unique identifier for each item in the collection.
+        -->
+        <div key={team.teamName}>{team.teamName}:<b>{team.squadName}</b></div>
+    </template>
+
+    <br/>
+    <!--
+        The iterator directive also allows us to render markup for each item in a collection,
+        while also providing special functionality for the first and last items of the collection.
+        We pass the name of the iterator as the value following the colon in the iterator attribute.
+        
+        This iterator variable is what we'll use inside of the template tags. It has four properties
+            - first, which holds a Boolean value indicating if the current element is the first element in the collection
+            - last, which holds a Boolean value indicating if the current element is the last element in the collection
+            - value, which holds the value of the current element in the collection
+            - index, which holds the index of the current element in the collection
+        
+        We data bind the name of the collection variable from our JS module to iterate through to the iterator attribute.
+    -->
+    <template iterator:team={teams}>
+        <!--
+            Like with the for:each directive, we need to add a key attribute to each outer tag inside of our directive and data
+            bind it to a value that's unique for each element in the collection.
+        -->
+        <template if:true={team.first} key={team.value.teamName}>
+            <div key={team.value.teamName}>{team.value.teamName}: <i>{team.value.squadName}</i></div>
+        </template>
+        <template if:false={team.first} key={team.value.teamName}>
+            <div key={team.value.teamName}>{team.value.teamName}: <span style="font-weight: bold">{team.value.squadName}</span></div>
+        </template>
+    </template>
+</template>

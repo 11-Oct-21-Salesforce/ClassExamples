@@ -2,19 +2,33 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>My LWC App</title>
+        <title>LWC OSS Examples</title>
         <style>
             body {
                 font-family: Arial, Helvetica, sans-serif;
             }
         </style>
+
+        <!--
+            To make use of SLDS (the Salesforce Lightning Design System), we
+                1. Install the SLDS node package with the following command:
+                        npm install @salesforce-ux/design-system
+                2. Copy the node_modules/@salesforce-ux/design-system/assets directory to the 
+                    src/resources directory.
+                3. Link to the SLDS stylesheet with a link element in our index.html file like
+                    the below link element.
+                4. Import the synthetic shadow in our index.js file with the following line:
+                        import '@lwc/synthetic-shadow';
+
+                    This allows us to have CSS styles cascade from parent components to children
+                    components.
+        -->
+        <link rel="stylesheet" href="/resources/assets/styles/salesforce-lightning-design-system-offline.css">
         <!-- Block zoom -->
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1"
         />
-        <link rel="shortcut icon" href="./resources/favicon.ico" />
-        
     </head>
     <body>
         

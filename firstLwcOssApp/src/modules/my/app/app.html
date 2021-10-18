@@ -1,42 +1,28 @@
+<!-- 
+    LWCs are custom HTML templates with JS modules. We start and end our HTML templates with template tags. The framework then
+    renders our components and attaches them to the DOM.
+-->
 <template>
-    <!-- LWC sample component <my-greeting> -->
-    <template if:true={displayMarkup}>
-        <div class="center greeting">
-            <!-- <my-greeting speed="slow"></my-greeting> -->
-            <my-greeting speed="medium"></my-greeting>
-            <!-- <my-greeting speed="fast"></my-greeting> -->
-        </div>
-    </template>
-
-    <template iterator:team={teams}>
-        <template if:true={team.first} key={team.value.teamName}>
-            <div key={team.value.teamName}>{team.value.teamName}: <i>{team.value.squadName}</i></div>
-        </template>
-        <template if:false={team.first} key={team.value.teamName}>
-            <div key={team.value.teamName}>{team.value.teamName}: <span style="font-weight: bold">{team.value.squadName}</span></div>
-        </template>
-        <br key={team.value.teamName}/>
-    </template>
-
-    <template if:false={displayMarkup}>
-        <div class="center">
-            <img src="./resources/lwc.png" />
-        </div>
-    
-        <!-- Page code -->
-        <div class="center">
-            <div class="container">
-                <!-- prettier-ignore -->
-                <p class="info">
-                    Edit <strong class="code">src/modules/my/app/app.html</strong>
-                    <br />and save for live reload.
-                </p>
-            </div>
-            <div>
-                <a href="https://lwc.dev" class="link" target="_blank">Learn LWC</a>
-            </div>
-        </div>
-    </template>
-
-    <button class="slds-button slds-button_brand" onclick={changeDisplay}>Change Display</button> 
+    <!--
+        lightning-accordion is a base component that implement an accordion with expandable 
+        sections
+    -->
+    <lightning-accordion>
+        <lightning-accordion-section label="Conditional Template Directives">
+            <!-- 
+                to render a custom component inside of another custom component, we follow the
+                format namespace-component-name. the namespace of the component we 
+            -->
+            <directives-conditionals></directives-conditionals>
+        </lightning-accordion-section>
+        <lightning-accordion-section label="Collection Template Directives">
+            <directives-collections></directives-collections>
+        </lightning-accordion-section>
+        <lightning-accordion-section label="Public Properties">
+            <properties-parent></properties-parent>
+        </lightning-accordion-section>
+        <lightning-accordion-section label="Events">
+            <events-parent></events-parent>
+        </lightning-accordion-section>
+    </lightning-accordion>
 </template>

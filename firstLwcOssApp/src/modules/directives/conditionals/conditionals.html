@@ -1,0 +1,27 @@
+<template>
+    <!--
+        The if:true template directive allows us to conditionally render markup. The markup between the template tags will be 
+        rendered in the case that the value of the Boolean variable in our JS module that's data bound to the if:true attribute
+        is true, and won't render otherwise.
+    -->
+    <template if:true={displayMarkup}>
+        <lightning-formatted-text value="This displays when the Boolean value is true"></lightning-formatted-text>
+    </template>
+
+
+    <!--
+        The if:false template directive allows us to conditionally render markup. The markup between the template tags will be 
+        rendered in the case that the value of the Boolean variable in our JS module that's data bound to the if:false attribute
+        is false, and won't render otherwise.
+    -->
+    <template if:false={displayMarkup}>
+        <lightning-formatted-text value="This displays when the Boolean value is false"></lightning-formatted-text>
+    </template>
+
+    <br/>
+    <!-- 
+        We can action bind events to event listeners in our JS module by using the corresponding event attribute. Event attributes
+        have the name of the event preceded with on. To action bind, we surround the name of the event listener with curly braces.
+    -->
+    <button onclick={changeDisplay}>Change Display</button> 
+</template>
