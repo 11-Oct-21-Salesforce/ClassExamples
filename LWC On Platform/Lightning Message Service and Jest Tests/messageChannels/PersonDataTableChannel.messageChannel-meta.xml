@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>PersonDataTableChannel</masterLabel>
+    <lightningMessageFields>
+        <description>API name of the chosen object.</description>
+        <fieldName>chosenObject</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>Id of the chosen record.</description>
+        <fieldName>chosenRecord</fieldName>
+    </lightningMessageFields>
+    <isExposed>true</isExposed>
+</LightningMessageChannel>

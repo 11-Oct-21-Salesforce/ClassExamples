@@ -1,0 +1,7 @@
+<template>
+    <div class="slds-box slds-theme_default slds-var-p-around_small">
+        <c-object-select chosen-object={chosenObject} object-options={objectOptions} onobjectselected={handleObjectSelected}>
+        </c-object-select>
+        <c-person-data-table chosen-object={chosenObject}></c-person-data-table>
+    </div>
+</template>
