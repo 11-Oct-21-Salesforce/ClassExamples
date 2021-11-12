@@ -1,0 +1,21 @@
+{
+  "edition" : "Developer",
+  "features": [
+    "Entitlements",
+    "FieldAuditTrail"
+  ],
+  "hasSampleData": true,
+  "objectSettings": {
+    "case": {
+      "sharingModel": "readWrite"
+    }
+  },
+  "settings": {
+    "securitySettings": {
+      "enableAdminLoginAsAnyUser": true,
+      "sessionSettings": {
+        "forceRelogin": false
+      }
+    }
+  }
+}

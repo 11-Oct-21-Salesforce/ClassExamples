@@ -1,0 +1,6 @@
+<template>
+    <template for:each={lifecycleHookMethodsInvoked} for:item="hookMethod">
+        <div key={hookMethod}>{hookMethod}</div>
+    </template>
+    <c-child-lifecycle-hook-demo></c-child-lifecycle-hook-demo>
+</template>

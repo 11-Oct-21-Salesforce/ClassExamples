@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Order_Amount_Must_Be_Greater_Than_0</fullName>
+    <active>true</active>
+    <errorConditionFormula>TotalAmount &lt;= 0</errorConditionFormula>
+    <errorDisplayField>TotalAmount</errorDisplayField>
+    <errorMessage>Order amount must be greater than 0.</errorMessage>
+</ValidationRule>
