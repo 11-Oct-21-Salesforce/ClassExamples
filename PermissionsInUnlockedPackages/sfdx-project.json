@@ -1,0 +1,26 @@
+{
+    "packageDirectories": [
+        {
+            "path": "force-app",
+            "default": true
+        },
+        {
+            "path": "OrderObject",
+            "package": "OrderObject",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT",
+            "default": false
+        }
+    ],
+    "name": "PermissionsInUnlockedPackages",
+    "namespace": "",
+    "sfdcLoginUrl": "https://login.salesforce.com",
+    "sourceApiVersion": "52.0",
+    "packageAliases": {
+        "OrderObject": "0Ho5f0000008OZdCAM",
+        "OrderObject@0.1.0-1": "04t5f000000ueOdAAI",
+        "OrderObject@0.1.0-2": "04t5f000000ueOiAAI",
+        "OrderObject@0.1.0-3": "04t5f000000ueOxAAI",
+        "OrderObject@0.1.0-4": "04t5f000000ueP2AAI"
+    }
+}
