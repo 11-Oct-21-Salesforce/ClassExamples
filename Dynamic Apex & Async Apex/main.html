@@ -1,0 +1,16 @@
+<template>
+  <div class="slds-m-around_xx-large">
+
+    <lightning-input
+    type="search"
+    onchange={handleChange}>
+    </lightning-input>
+
+    <template if:true={acc.data}>
+        <template for:each={acc.data} for:item="account">
+            <p key={account.id}>{account.Name}</p>
+        </template>
+    </template>
+
+  </div>
+</template>
