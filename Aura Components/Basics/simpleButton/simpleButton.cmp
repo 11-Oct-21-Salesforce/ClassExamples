@@ -1,0 +1,45 @@
+<aura:component>
+    <!-- 
+		the aura:attribute is like a variable that allows us to store values in the view
+
+    	the name parameter is required, it's the name for our attribute for us to refer to later
+
+    	the type parameter is also required, it can be a bunch of different things (Boolean, Date, DateTime, Decimal,
+        	Double, Integer, Long, String, Object, sObject (like Account), array, list, set, or map
+        	arrays are the only collection that can contain sObjects, e.g. Account[]
+    
+   		the default parameter is optional
+        	it lets us define a default value for our attribute that can be overridden
+	-->
+    <aura:attribute name="buttonMessage" type="String"></aura:attribute>	
+    
+    <!-- 
+		we use expression syntax to refer to our <aura:attribute> tags
+        
+    	expression syntax looks like {!value}
+
+    	for <aura:attribute> tags, we use the v value provider, which tells the system to look in our component file
+        	for the name we specify after the period, e.g. {!v.engine} tells the system "display the value of the
+        	<aura:attribute> named engine here, you can find it in the view"
+	-->
+    {!v.buttonMessage}   
+    
+    <!-- we can use regular HTML within our component markup, like the following line break -->
+    <br/>
+    
+    <!--
+		the <lightning:button> tag is another member of the Lightning Component Library
+        
+    	the label attribute is the text that will be displayed on our button
+
+    	the value of the title attribute is the text that will be displayed in a popup when the user hovers over
+        	the button
+
+    	the onclick attribute is similar to those we see in HTML - it lists an event handler for the onclick event
+        	we use expression syntax again, this time with a c value provider
+        	since we're in the view, c refers to an action in the JavaScript controller
+        	so our expression syntax is telling the system "when this button is clicked, invoke the function named
+        	handleClick to handle it, you can find the function in the JavaScript controller file"
+    -->
+    <lightning:button label="Click Me" onclick="{!c.handleClick}"></lightning:button>
+</aura:component>
