@@ -1,0 +1,17 @@
+<!-- the design resource allows us to expose customizations for Lightning Experience
+
+the label attribute changes the name of our component when we're adding it to a Lightning Page, so instead of 
+the component displaying as ldsEx in the page layout wizard, it'll now be named Lightning Data Service Example -->
+<design:component label="Record Form Demo">
+	
+    <!-- we can also use the design attribute to expose <aura:attribute> tags for administrators to determine
+    default values for
+
+    the name of <design:attribute> must match the name of the corresponding <aura:attribute>
+        
+    the label of the <design:attribute> is the prompt that is displayed to the user, since the display attribute
+    is a boolean, when a user is viewing this component in the Lightning App Builder, the prompt 
+    ("Determine compact form.") will be shown with a checkbox where checked = true and unchecked = false on the
+    following line -->
+	<design:attribute name="display" label="Display compact form."></design:attribute>
+</design:component>

@@ -6,10 +6,6 @@
 	we frequently make use of Lightning Apps during development to preview our components while we're writing
 	them
 		these are called harness apps and its common to name them harness.app
-
-	here, we extend the force:slds class in our harness app, not our top-level component b/c
-	this class is automatically loaded as part of Lightning Experience, so accessing SLDS
-	features requires no extra effort from us when we put a component in a Lightning page 
 -->
 <aura:application >
     <!-- 

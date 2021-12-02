@@ -1,0 +1,12 @@
+<aura:component >
+    <aura:attribute name="caseId" type="Id"></aura:attribute>
+    
+        
+    <!-- using <lightning:recordViewForm> component here, it's a part of Lightning Data Service -->
+    <lightning:recordViewForm recordId="{!v.caseId}" objectApiName="Case">
+        <lightning:outputField fieldName="Status"></lightning:outputField>
+        <lightning:outputField fieldName="Type"></lightning:outputField>
+        <lightning:outputField fieldName="Priority"></lightning:outputField>
+        <lightning:outputField fieldName="Subject"></lightning:outputField>
+    </lightning:recordViewForm>
+</aura:component>

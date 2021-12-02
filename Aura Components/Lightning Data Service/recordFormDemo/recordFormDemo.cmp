@@ -1,0 +1,50 @@
+<!-- this component is designed to be included on an Account record page in Lightning Experience
+
+it will display information about the selected account in either the custom form that we define with the fields
+attribute, or the default page layout view that we define in the second form
+
+it also has a change view button that allows the user to switch between displays of the two forms -->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId">
+     <!-- this <aura:attribute> will hold our fields for our later <lightning:recordForm>, the fields attribute
+    of <lightning:recordForm> is expecting an array of strings, so that's what our attribute here will be 
+        
+    the strings we populate the attribute with are the API names of the fields we want our form to display -->
+	<aura:attribute name="fields" type="String[]" default="['Name', 'Industry', 'AnnualRevenue']"></aura:attribute>
+    <aura:attribute name="display" type="Boolean" default="true"></aura:attribute>
+    
+      <!-- <lightning:card> is a member of the Lightning Component Library, it acts as a nice opaque container to
+    hold related information -->
+    <aura:if isTrue="{!v.display}">
+            <!-- <lightning:recordForm> is a member of the Lightning Component Library, it allows us to easily
+            interact with single records from the database - it lets us view/edit an existing record or create a
+            new one 
+        
+            the objectApiName parameter is required and takes the API name of the object we're interacting with
+        
+            the recordId parameter takes the recordId and is needed if we want to view/edit an existing record
+                because we implemented the force:hasRecordId interface, the system made an <aura:attribute>
+                named recordId and gave it the value of the record Id from the url of our record page (which is
+                why we also implemented flexipage:availableForRecordHome interface) under the hood, so we're
+                free to reference it here
+            
+            the fields parameters takes a string array of fields to display, we bind it to the <aura:attribute>
+            named fields that we defined earlier -->
+        <lightning:recordForm objectApiName="Account" recordId="{!v.recordId}" fields="{!v.fields}"></lightning:recordForm>
+    </aura:if>
+            
+     <!-- the second exclamation point here is again the boolean opposite operator, so we're assigning
+    the opposite of the value of the <aura:attribute> named display to isTrue here (i.e. if the display
+    attribute is true, the assigned value here will be false and vice versa) -->
+    <aura:if isTrue="{!!v.display}">
+        
+        <!-- alternatively, we can use either the compact or page layouts with <lightning:recordForm>
+        instead of specifying the fields parameter
+            we use Full for the page layout and Compact for the Compact page layout
+        
+        we also have the ability to edit the number of columns in our form, here we set the number to 2
+        by giving that value to the columns attribute -->
+    	<lightning:recordForm objectApiName="Account" recordId="{!v.recordId}" layoutType="Full" columns="2"></lightning:recordForm>
+    </aura:if>
+    
+    <lightning:button label="Change View" onclick="{!c.displayChange}"></lightning:button>
+</aura:component>

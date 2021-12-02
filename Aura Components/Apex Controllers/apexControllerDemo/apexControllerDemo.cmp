@@ -1,0 +1,50 @@
+<!-- we declare our Apex controller through setting the controller attribute to the name of the Apex class -->
+<aura:component controller="ApexControllerDemo">
+        <!-- <aura:attribute> to hold the array of Ids that our Apex method returns, we'll populate it upon return
+    of the server call -->
+	<aura:attribute name="caseIds" type="Id[]"></aura:attribute>
+    
+    <!-- an event handler that will call the doInit function in our JS controller when the component has finished
+    loading -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"></aura:handler>
+    
+    <lightning:card title="Open Cases">
+        <!-- the <lightning:accordion> component is a member of the Lightning Component Library that creates an
+        accordion (no way!)
+        here, we give it an aura:id so we can refer to it later in our JS with the component.find() method
+        if we wish -->
+    	<lightning:accordion>
+            <!-- the <aura:iteration> component is a member of the Lightning Component Library that acts kind of
+            like a markup version of a for-of loop
+        
+            the required items attribute is the list of elements that we are iterating through
+        
+            the required var attribute is the iteration variable
+        
+            e.g., this is analogous to a JS for-of loop that looks like for(let case of cases) where cases is the
+            value of items and case is the value of var -->
+        	<aura:iteration items="{!v.caseIds}" var="caseId">
+                
+                <!-- <lightning:accordionSection is another member of the Lightning Component Library, it goes
+                within our <lightning:accordion> and is an expandable/collapsible section of said accordion
+                    
+                because we're within an <aura:iteration>, we use expression syntax to refer to the iteration
+                variable; the iteration variable isn't an <aura:attribute>, so there's no value provider here -->
+            	<lightning:accordionSection label="{!caseId}">
+                    
+                    <!-- instantiate a child component with a view of the record inside of the accordion section
+                    by specifying the caseId attribute, we're setting the value of the <aura:attribute> in the 
+                    child component that's named case
+                
+                    so all together, our <lightning:accordion> - <aura:iteration> - <lightning:accordionSection>
+                    combination makes an accordion that has a section for each open case; we can expand
+                    those sections to get more details about each case
+                
+                    and we did all this with a whole lot less markup/JS than we would have needed if we wrote in
+                    HTML/CSS or even if we used the component blueprint from SLDS! -->
+                	<c:recordViewFormDemo caseId="{!caseId}"></c:recordViewFormDemo>
+                </lightning:accordionSection>
+            </aura:iteration>
+        </lightning:accordion>
+    </lightning:card>
+</aura:component>
