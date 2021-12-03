@@ -1,0 +1,22 @@
+<aura:component >
+    <aura:attribute name="selectLabel" type="String"></aura:attribute>
+    <aura:attribute name="selectOptions" type="String[]"></aura:attribute>
+    <aura:attribute name="selectValue" type="String"></aura:attribute>
+    <aura:attribute name="searchLabel" type="String"></aura:attribute>
+    <aura:attribute name="searchInput" type="String"></aura:attribute>
+    
+    <aura:registerEvent name="selectChange" type="c:selectChange"></aura:registerEvent>
+    <aura:registerEvent name="searchInputChange" type="c:searchInputChange"></aura:registerEvent>
+    
+	<lightning:select label="{!v.selectLabel}" onchange="{!c.handleSelectChange}" 
+                      value="{!v.selectValue}">
+    	<option label="None" value=""></option>
+        <aura:iteration items="{!v.selectOptions}" var="option">
+        	<option label="{!option}" value="{!option}"></option>
+        </aura:iteration>
+    </lightning:select>
+    
+    <br/>
+    
+    <lightning:input label="{!v.searchLabel}" value="{!v.searchInput}" oncommit="{!c.handleSearchInput}"></lightning:input>
+</aura:component>

@@ -1,0 +1,6 @@
+<aura:component >
+	<aura:attribute name="columns" type="List"></aura:attribute>
+    <aura:attribute name="data" type="Object"></aura:attribute>
+    
+    <lightning:datatable keyField="Id" columns="{!v.columns}" data="{!v.data}" hideCheckboxColumn="true"></lightning:datatable>
+</aura:component>

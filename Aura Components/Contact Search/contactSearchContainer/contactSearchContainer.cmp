@@ -1,0 +1,30 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="ContactSearchService">
+    <aura:attribute name="accNames" type="String[]"></aura:attribute>
+    <aura:attribute name="accName" type="String" default=""></aura:attribute>
+    <aura:attribute name="contactName" type="String" default=""></aura:attribute>
+    <aura:attribute name="tableColumns" type="List"></aura:attribute>
+    <aura:attribute name="tableData" type="Object"></aura:attribute>
+    <aura:attribute name="displayTable" type="Boolean" default="false"></aura:attribute>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"></aura:handler>
+    <aura:handler name="selectChange" event="c:selectChange" action="{!c.handleSelectChange}"></aura:handler>
+    <aura:handler name="searchInputChange" event="c:searchInputChange" action="{!c.handleSearchInputChange}"></aura:handler>
+    
+    <lightning:card class="slds-var-p-around_small">
+        <c:contactSearchFilters selectLabel="Filter By Related Account" 
+                                searchLabel="Search By Contact Name"
+                                selectOptions="{!v.accNames}">
+        </c:contactSearchFilters>
+        
+        <br/>
+        <lightning:button label="Search for Matching Contacts" onclick="{!c.contactSearch}"></lightning:button>
+        
+        <br/>
+        <br/>
+        <aura:if isTrue="{!v.displayTable}">
+            <div style="height:250px">
+                <c:searchResults data="{!v.tableData}" columns="{!v.tableColumns}"></c:searchResults>
+            </div>
+        </aura:if>
+    </lightning:card>
+</aura:component>
