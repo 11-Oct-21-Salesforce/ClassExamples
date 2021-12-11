@@ -1,0 +1,7 @@
+<apex:page standardController="Account" lightningStylesheets="true">
+    <apex:pageBlock >
+        <apex:pageBlockSection >
+            <apex:outputField value="{!account.Name}"></apex:outputField>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

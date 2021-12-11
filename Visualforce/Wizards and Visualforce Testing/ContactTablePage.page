@@ -1,0 +1,18 @@
+<apex:page controller="ContactAndCaseTablePage_CC" lightningStylesheets="true">
+    <apex:form >
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!contactCheckboxWrappers}" var="wrapper">
+                <apex:column >
+                    <apex:inputCheckbox value="{!wrapper.checkbox}"></apex:inputCheckbox>
+                </apex:column>
+                <apex:column value="{!wrapper.c.Name}"></apex:column>
+                <apex:column value="{!wrapper.c.Phone}"></apex:column>
+                <apex:column value="{!wrapper.c.Email}"></apex:column>
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="See Related Cases" action="{!getCases}"></apex:commandButton>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

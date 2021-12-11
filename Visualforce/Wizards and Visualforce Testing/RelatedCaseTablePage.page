@@ -1,0 +1,17 @@
+<apex:page controller="ContactAndCaseTablePage_CC" lightningStylesheets="true">
+    <apex:pageBlock >
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlockTable value="{!relatedCases}" var="case" rendered="{!renderCaseTable}">
+            <apex:facet name="header">Related Case Records</apex:facet>
+            <apex:column value="{!case.Status}"></apex:column>
+            <apex:column value="{!case.Priority}"></apex:column>
+            <apex:column value="{!case.Contact.Name}"></apex:column>
+            <apex:column value="{!case.Subject}"></apex:column>
+        </apex:pageBlockTable>
+        <apex:pageBlockButtons >
+            <apex:form >
+                <apex:commandButton value="Return to Contacts" action="{!returnToContacts}"></apex:commandButton>
+            </apex:form>
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+</apex:page>

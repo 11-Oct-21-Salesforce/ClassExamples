@@ -1,0 +1,18 @@
+<apex:page standardController="Account" recordSetVar="accs" lightningStylesheets="true">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!accs}" var="acc">
+                <apex:column value="{!acc.Name}"></apex:column>
+                <apex:column value="{!acc.AnnualRevenue}"></apex:column>
+                <apex:column value="{!acc.Industry}"></apex:column>
+                <apex:column value="{!acc.AccountSource}"></apex:column>
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="|<" action="{!first}" disabled="{!NOT(hasPrevious)}"></apex:commandButton>
+                <apex:commandButton value="<" action="{!previous}" disabled="{!NOT(hasPrevious)}"></apex:commandButton>
+                <apex:commandButton value=">" action="{!next}" disabled="{!NOT(hasNext)}"></apex:commandButton>
+                <apex:commandButton value=">|" action="{!last}" disabled="{!NOT(hasNext)}"></apex:commandButton>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

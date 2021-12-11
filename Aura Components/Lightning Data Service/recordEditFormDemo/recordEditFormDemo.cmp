@@ -1,0 +1,14 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <lightning:card class="slds-var-p-around_medium">
+        <lightning:recordEditForm objectApiName="Account">
+            <lightning:inputField fieldName="Name"></lightning:inputField>
+            <lightning:inputField fieldName="BillingState"></lightning:inputField>
+            <lightning:inputField fieldName="BillingCountry"></lightning:inputField>
+            <lightning:inputField fieldName="Phone"></lightning:inputField>
+            <lightning:inputField fieldName="Industry"></lightning:inputField>
+            
+            <lightning:button type="submit" label="Save Account"></lightning:button>
+            <lightning:button type="reset" label="Cancel"></lightning:button>
+        </lightning:recordEditForm>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,15 @@
+<apex:page controller="DynamicTablePage_CC" lightningStylesheets="true">
+    <apex:form >
+        <apex:pageBlock id="pageBlock">
+            <apex:selectRadio value="{!selectedObject}">
+                <apex:selectOption itemLabel="Lead" itemValue="Lead"></apex:selectOption>
+                <apex:selectOption itemLabel="Opportunity" itemValue="Opportunity"></apex:selectOption>
+                <apex:actionSupport event="onchange" reRender="pageBlock"></apex:actionSupport>
+            </apex:selectRadio>
+            
+            <apex:pageBlockSection rendered="{!renderTable}">
+                <apex:dynamicComponent componentValue="{!table}"></apex:dynamicComponent>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
