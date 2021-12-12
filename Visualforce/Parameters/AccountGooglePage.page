@@ -1,6 +1,30 @@
+<!--
+    Using the Standard Controller for the Account object
+-->
 <apex:page standardController="Account">
+
+    <!--
+        Here we're using an <apex:outputLink> component, which will redirect our users to the
+        specified URL when it's clicked. We specify the URL by passing it to the value
+        attribute.
+    -->
     <apex:outputLink value="https://google.com/search">
+        <!--
+            We're placing our link text between the opening and closing <apex:outputLink> tags
+            using data binding to include the name of the account.
+        -->
         Google {!account.Name}
+
+        <!--
+            We can pass parameters to a parent component with the <apex:param> component.
+            <apex:param> can only be a child of a small number of Visualforce components, but
+            <apex:outputLink> is among them. When using <apex;param>, we set the name of the
+            parameter we're providing a value to with the name attribute and the value we
+            want to assign to the parameter to the value attribute.
+
+            Here, we're setting the q parameter to the name of the displayed account. The
+            q parameter is the query string in a Google search - i.e. what we're searching for.
+        -->
         <apex:param name="q" value="{!account.Name}"></apex:param>
     </apex:outputLink>
 </apex:page>
