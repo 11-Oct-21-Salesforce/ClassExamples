@@ -1,6 +1,88 @@
+<!-- 
+    Visualforce has its own framework-specific markup language with standard components.
+    Visualforce tags follow the format namespace:componentName, e.g. the <apex:page> tag,
+    which starts and ends each Visualforce page.We can still include HTML elements in our
+    Visualforce pages (such as the comment that we're currently in).
+    
+    Visualforce doesn't have a client-side JavaScript controller - only a server-side Apex
+    controller and offers limited support for client-side JavaScript. This means that we 
+    generally need to make a server call to respond to any user interaction, regardless of the
+    need to interact with the database.
+
+    We have four types of Apex controllers in Visualforce, they are
+
+        - the Standard Controller, a prebuilt Apex class available for all standard and custom
+            objects. It gives us the same functionality that we can get from a record page (e.g.
+            saving edits to a record, deleting the record, viewing the record, etc.). We 
+            declare the use of a standard controller by passing the API name of the object we
+            want to work with to the standardController attribute of the opening <apex:page>.
+
+        - the Standard Set Controller, a prebuilt Apex class available for some standard and
+            all custom objects. It differs from the Standard Controller in that it allows us 
+            to work with multiple records at once (the Standard Controller only allows us to
+            work with one record of the specified object at a time). In addition to having
+            methods to perform database operations on the records we're working with, the
+            Standard Set Controller also includes methods for pagination, allowing us to break
+            the set of records into multiple pages. We declare the use of a Standard Set 
+            Controller by passing the API name of the object we want to work with to the
+            standardController attribute and a name for the variable that will hold the list
+            of records to the recordSetVar attribute (both of which are in the opening 
+            <apex:page>).
+
+        - the Controller Extension, a custom Apex class that we create. We use extensions when we
+            want to make use of standard controller functionality but override or extend it
+            AND when we need to use the standard controller because of where we want to surface
+            our Visualforce page, but need custom functionality. We declare the use of an 
+            extension by passing the name (or comma-separated names) of the Apex class(es)
+            serving as our extension(s) to the extensions attribute of the opening <apex:page>.
+
+        - the Custom Controller, a custom Apex class that we create. We use Custom Controllers
+            when the Standard Controller doesn't fit our use case or needs. We declare the
+            use of a Custom Controller by passing the name of the Apex class serving as our
+            controller to the controller attribute of the opening <apex:page>.
+
+    A Visualforce page can only use one Standard Controller, one Standard Set Controller, or one
+    Custom Controller (not multiples or combinations of any), but there's no limit to the number
+    of Controller Extensions a single page can use.
+
+    Visualforce was released long before the Lightning Experience user interface, as a result
+    Visualforce renders with the styling of the user interface - Salesforce Classic - that 
+    existed at the time. To have our page use Lightning Experience styling, we can set the 
+    lightningStylesheets attribute of the opening <apex:page> to true. 
+-->
 <apex:page standardController="Account" lightningStylesheets="true">
+
+    <!-- 
+        <apex:pageBlock> is one of the Visualforce standard components, it functions like
+        the <div> element in HTML, giving us a division on our page.
+    -->
     <apex:pageBlock >
+
+        <!--
+            <apex:pageBlockSection> is a standard component that allows us to create a section 
+            within an <apex:pageBlock>. <apex:pageBlockSection> (along with 
+            <apex:pageBlockButtons>) must be a direct child of an <apex:pageBlock>.
+        -->
         <apex:pageBlockSection >
+
+            <!--
+                <apex:outputField> is a standard component that allows us to display the value
+                of a field on a record. It has a value attribute that we data bind the record
+                field to.
+
+                We perform data binding in Visualforce by using expression syntax following the
+                format {!expression}, which indicates that 'expression' is a reference to another
+                value. Because we're using a Standard Controller, the framework will retrieve
+                the record whose Id is specified in the URL (if there is a record Id in the URL)
+                and store it in a variable whose name follows the format sobject, where sObject
+                is the standard or custom object that we're using the standard controller with.
+
+                We can then refer to individual fields on a record through dot notation following
+                the format sobject.fieldAPIName.
+
+                Because <apex:outputField> is within an <apex:pageBlockSection>, the label for
+                the field will automatically be displayed next to its value.
+            -->
             <apex:outputField value="{!account.Name}"></apex:outputField>
         </apex:pageBlockSection>
     </apex:pageBlock>
