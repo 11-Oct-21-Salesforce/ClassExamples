@@ -1,17 +1,51 @@
+<!--
+    Using the Apex class named TransientDemo_CC as a Custom Controller
+-->
 <apex:page controller="TransientDemo_CC" lightningStylesheets="true">
+
+    <!-- 
+        we're using an <apex:commandButton>, which needs to be wrapped in an <apex:form>
+    -->
     <apex:form >
+
+        <!--
+            giving an id of pageBlock to our <apex:pageBlock> for rerendering
+        -->
     	<apex:pageBlock id="pageBlock">
         	<apex:pageBlockButtons >
+
+                <!--
+                    A button labeled Refresh that is action bound to the refresh() function in TransientDemo_CC. When clicked,
+                    this button rerenders the element with the id "pageBlock" and all of its nested elements. We specify this
+                    behavior by passing the id (or comma-separated ids) to the reRender attribute.
+                -->
             	<apex:commandButton value="Refresh" action="{!refresh}" reRender="pageBlock"></apex:commandButton>
             </apex:pageBlockButtons>
             
+            <!--
+                We can specify the number of columns for an <apex:pageBlockSection> by passing our desired integer to the columns
+                attribute.
+            -->
             <apex:pageBlockSection columns="1">
+
+                <!--
+                    <apex:pageBlockSectionItem> must be a child of <apex:pageBlockSection>. It allows us to define a row
+                    within our section.
+                -->
             	<apex:pageBlockSectionItem >
+                    <!--
+                        <apex:outputLabel> to label our displayed value, which is data bound in an <apex:outputText>. Because we
+                        are data binding an output value, the framework looks for a method named getNonTransientVariable() in our
+                        controller.
+                    -->
                 	<apex:outputLabel value="Non-Transient Variable"></apex:outputLabel>
                     <apex:outputText value="{!nonTransientVariable}"></apex:outputText>
                 </apex:pageBlockSectionItem>
                 
                 <apex:pageBlockSectionItem >
+                    <!--
+                        <apex:outputLabel> and <apex:outputText> for the method named getTransientVariable()
+                    -->
                 	<apex:outputLabel value="Transient Variable"></apex:outputLabel>
                     <apex:outputText value="{!transientVariable}"></apex:outputText>
                 </apex:pageBlockSectionItem>
