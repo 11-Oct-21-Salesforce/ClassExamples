@@ -1,9 +1,29 @@
+<!-- 
+    Using the Standard Controller for the Case object
+-->
 <apex:page standardController="Case" recordSetVar="cases" lightningStylesheets="true">
+
+    <!--
+        We're allowing user input with our <apex:inlineEditSupport> and <apex:commandButton> components, so we need to wrap them
+        in <apex:form> tags
+    -->
     <apex:form >
         <apex:pageBlock >
             <apex:pageBlockTable value="{!cases}" var="case">
+
+                <!-- 
+                    Because we're not data binding a record field to the value attribute of the <apex:column>, our column won't
+                    automatically have the field's label as its header, so we set a column header by passing it to the headerValue
+                    attribute.
+                -->
                 <apex:column headerValue="Status">
                 	<apex:outputField value="{!case.Status}">
+                        <!--
+                            <apex:inlineEditSupport> allows us to provide the ability for our users to edit values that render
+                            as read-only by default. It can only be a child of a small number of standard components,
+                            <apex:outputField> among them. The showOnEdit attribute takes the id of an element to display whenever
+                            the editing is invoked.
+                        -->
                     	<apex:inlineEditSupport showOnEdit="updateRecords"></apex:inlineEditSupport>
                     </apex:outputField>
                 </apex:column>
@@ -11,7 +31,16 @@
                 <apex:column value="{!case.Subject}"></apex:column>
             </apex:pageBlockTable>
             <apex:pageBlockButtons >
+                <!--
+                    The button to show on edit. It's labeled Update Records and invokes the save method of the Standard Set Controller.
+                    To ensure that it's not displayed before editing is invoked, we set the style attribute, passing a value of
+                    display:none.
+                -->
                 <apex:commandButton value="Update Records" action="{!save}" style="display:none" id="updateRecords"></apex:commandButton>
+                
+                <!--
+                    Pagination buttons using methods from the Standard Set Controller
+                -->
                 <apex:commandButton value="|<" action="{!first}" disabled="{!NOT(hasPrevious)}"></apex:commandButton>
                 <apex:commandButton value="<" action="{!previous}" disabled="{!NOT(hasPrevious)}"></apex:commandButton>
                 <apex:commandButton value=">" action="{!next}" disabled="{!NOT(hasNext)}"></apex:commandButton>
