@@ -1,13 +1,75 @@
+<!--
+    Using Lightning Experience styling and the Standard Set Controller with the Account object,
+    assiging the list of records returned to a variable named accs.
+-->
 <apex:page standardController="Account" recordSetVar="accs" lightningStylesheets="true">
+    <!--
+        We use an <apex:form> component whenever we want to allow input to a controller variable
+        or invoke an action method from the controller. Here, the <apex:form> is required
+        because where invoking methods from the Standard Set Controller with the four
+        <apex:commandButton> components below (although we could adjust our form placement so 
+        that it only wraps those command buttons).
+    -->
     <apex:form >
         <apex:pageBlock >
+
+            <!--
+                <apex:pageBlockTable> must be a direct child of either an <apex:pageBlock> or
+                <apex:pageBlockSection>. The table allows us to display a list of objects.
+                The value attribute takes the data bound list. The var attribute takes the name
+                we would like to give to an individual item from the list to reference it
+                between the opening and closing <apex:pageBlockTable> tags.
+
+                <apex:pageBlockTable> differs from another table component <apex:dataTable> in
+                that it includes Salesforce-like styling by default.
+            -->
             <apex:pageBlockTable value="{!accs}" var="acc">
+
+                <!-- 
+                    Within our table, we use <apex:column> tags for each of our columns.
+                    The value in each cell under the column can be set with the value attribute
+                    (which we data bind our desired value to, using dot notation and the 
+                    variable name as we specified it in var in the <apex:pageBlockTable>).
+
+                    Because we're data binding a field from an sObject to the value attribute,
+                    the label of the field will automatically be included as the header for our
+                    column.
+                -->
                 <apex:column value="{!acc.Name}"></apex:column>
                 <apex:column value="{!acc.AnnualRevenue}"></apex:column>
                 <apex:column value="{!acc.Industry}"></apex:column>
                 <apex:column value="{!acc.AccountSource}"></apex:column>
             </apex:pageBlockTable>
+
+            <!--
+                <apex:pageBlockButtons> must be a direct child of <apex:pageBlock>. It allows us
+                to render one or more buttons using Salesforce-like styling.
+            -->
             <apex:pageBlockButtons >
+                <!-- 
+                    The <apex:commandButton> standard component is used to invoke a controller function when a user clicks it.
+                    The value attribute takes the label for the button and the action attribute is action bound (again through
+                    expression syntax following the format {!expression}) to an Apex controller method that will be invoked when
+                    the button is clicked.
+
+                    Here, we're using the first(), previous(), next(), and last() buttons of the Standard Set Controller to take
+                    the user to the first, previous, next, and last page of records, respectively.
+                    
+                    Because we don't want the buttons to be displayed if they won't have any effect (e.g. there's no need to allow
+                    the user to click the |< button if they're already on the first page of records), we also give a value to the 
+                    disabled attribute of each of our buttons, which takes a Boolean value and either enables the button (if the 
+                    Boolean value is false) or disables the button (if the Boolean value is false). We again use expression syntax,
+                    this time with the NOT function (which negates a Boolean value, turning a true to a false and a false to a true)
+                    and data binding it to methods from the Standard Set Controller.
+
+                    We're data binding to methods because of how the Visualforce framework works - whenever we attempt to display a
+                    value, we provide the name for the corresponding variable in our expression syntax and the framework looks for
+                    a getter with the name getVariableName() (where variableName is the name of our variable) and invokes it. When
+                    we attempt to accept input to a controller variable, we provide the name for the corresponding variable in our
+                    expression syntax and the framework looks for a setter with the name setVariableName() (where variableName is
+                    the name of our variable). The behavior of the framework can't be changed, so we must create getters and setters
+                    and name them appropriately.
+                -->
                 <apex:commandButton value="|<" action="{!first}" disabled="{!NOT(hasPrevious)}"></apex:commandButton>
                 <apex:commandButton value="<" action="{!previous}" disabled="{!NOT(hasPrevious)}"></apex:commandButton>
                 <apex:commandButton value=">" action="{!next}" disabled="{!NOT(hasNext)}"></apex:commandButton>
