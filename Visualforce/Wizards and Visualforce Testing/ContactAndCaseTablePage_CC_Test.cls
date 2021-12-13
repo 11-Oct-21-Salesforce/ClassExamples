@@ -1,7 +1,16 @@
+/*
+    The test class for the ContactAndCaseTablePage_CC Custom Controller. To test Visualforce pages, we create test classes for
+    any custom controller code they use. We then simulate user interaction by invoking all getters, setters, and action methods from
+    the controller and calling appropriate asserts.
+*/
 @isTest
 private class ContactAndCaseTablePage_CC_Test {
     @testSetup
     static void testSetup() {
+        /*
+            We can use the Test.setCurrentPage() method to determine the Visualforce page that our test is operating in the context
+            of.
+        */
         PageReference contactTablePage = Page.ContactTablePage;
         Test.setCurrentPage(contactTablePage);
         

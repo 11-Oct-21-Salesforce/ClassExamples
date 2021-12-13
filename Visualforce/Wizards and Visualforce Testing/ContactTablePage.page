@@ -1,9 +1,25 @@
+<!--
+    Using an Apex class named ContactAndCaseTablePage_CC as a custom controller
+-->
 <apex:page controller="ContactAndCaseTablePage_CC" lightningStylesheets="true">
+    <!--
+        We need to wrap our <apex:commandButton> and <apex:inputCheckbox> components in <apex:form> tags
+    -->
     <apex:form >
+        <!-- 
+            By including the <apex:pageMessages> component in our page, any messages we add in our controller
+            will automatically be displayed
+        -->
         <apex:pageMessages ></apex:pageMessages>
         <apex:pageBlock >
+            <!--
+                We're using a wrapper class, see ContactAndCaseTablePage_CC
+            -->
             <apex:pageBlockTable value="{!contactCheckboxWrappers}" var="wrapper">
                 <apex:column >
+                    <!-- 
+                        we're using <apex:inputCheckbox> to provide a checkbox column
+                    -->
                     <apex:inputCheckbox value="{!wrapper.checkbox}"></apex:inputCheckbox>
                 </apex:column>
                 <apex:column value="{!wrapper.c.Name}"></apex:column>
@@ -11,6 +27,10 @@
                 <apex:column value="{!wrapper.c.Email}"></apex:column>
             </apex:pageBlockTable>
             <apex:pageBlockButtons >
+                <!--
+                    <apex:commandButton> with the label See Related Cases that's action bound to a getCases()
+                    method. This method directs the user to the next step of the wizard.
+                -->
                 <apex:commandButton value="See Related Cases" action="{!getCases}"></apex:commandButton>
             </apex:pageBlockButtons>
         </apex:pageBlock>

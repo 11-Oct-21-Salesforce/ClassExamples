@@ -1,7 +1,22 @@
+<!--
+    Using an Apex class named ContactAndCaseTablePage_CC as a custom controller
+-->
 <apex:page controller="ContactAndCaseTablePage_CC" lightningStylesheets="true">
     <apex:pageBlock >
         <apex:pageMessages ></apex:pageMessages>
+
+        <!--
+            Table to show the cases related to the contacts selected on the previous step of the wizard,
+            only rendered when renderCaseTable is true
+        -->
         <apex:pageBlockTable value="{!relatedCases}" var="case" rendered="{!renderCaseTable}">
+            <!--
+                We can use <apex:facet> to provide a value for a facet of a parent component. A standard 
+                component may or may not have facets. If it does, the facets will be listed in the component
+                reference in the Visualforce Developer Guide. <apex:pageBlockTable> has three facets,
+                including header, which we can populate to provide a header for our table. We determine
+                the facet we're specifying through the name attribute of <apex:facet>.
+            -->
             <apex:facet name="header">Related Case Records</apex:facet>
             <apex:column value="{!case.Status}"></apex:column>
             <apex:column value="{!case.Priority}"></apex:column>
@@ -9,6 +24,11 @@
             <apex:column value="{!case.Subject}"></apex:column>
         </apex:pageBlockTable>
         <apex:pageBlockButtons >
+            <!--
+                <apex:form> that wraps an <apex:commandButton> that is labeled Return to Contacts and invokes
+                the action bound returnToContacts() method when invoked. This method is used to return
+                the user to the previous step of the wizard.
+            -->
             <apex:form >
                 <apex:commandButton value="Return to Contacts" action="{!returnToContacts}"></apex:commandButton>
             </apex:form>
