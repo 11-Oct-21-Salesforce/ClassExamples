@@ -1,13 +1,51 @@
+<!--
+    Using the Apex class DynamicTablePage_CC as a custom controller
+-->
 <apex:page controller="DynamicTablePage_CC" lightningStylesheets="true">
+
+    <!--
+        The <apex:selectRadio> requires that we use an <apex:form>
+    -->
     <apex:form >
         <apex:pageBlock id="pageBlock">
+
+            <!--
+                <apex:selectRadio> displays a set of radio buttons. We data bind the controller variable
+                to which we want the framework to assign the chosen option to the value attribute.
+            -->
             <apex:selectRadio value="{!selectedObject}">
+
+                <!--
+                    Between the opening and closing <apex:selectRadio> tags, we can specify the different
+                    radio buttons with <apex:selectOption> tags, each taking itemLabel and itemValue values.
+                -->
                 <apex:selectOption itemLabel="Lead" itemValue="Lead"></apex:selectOption>
                 <apex:selectOption itemLabel="Opportunity" itemValue="Opportunity"></apex:selectOption>
+
+                <!-- 
+                    <apex:actionSupport> allows us to make a server call to rerender a section of our page
+                    when a DOM event occurs. We pass the name of the DOM event to the event attribute and the
+                    id (or comma-separated list of ids) of the element(s) to rerender to the reRender attribute.
+
+                    With this, the element with the id pageBlock and all of the elements it contains will be
+                    rerendered when the selected radio button changes.
+                -->
                 <apex:actionSupport event="onchange" reRender="pageBlock"></apex:actionSupport>
             </apex:selectRadio>
             
+            <!--
+                Many standard components have a rendered attribute, which takes a Boolean value. If the
+                value is true, the component is rendered. If false, the component isn't displayed. Here,
+                we're controlling whether the component is rendered by data binding to a variable named
+                renderTable.
+            -->
             <apex:pageBlockSection rendered="{!renderTable}">
+
+                <!--
+                    <apex:dynamicComponent> allows us to dynamically create Visualforce components. It
+                    has a componentValue attribute that we data bind to a getter that returns a Visualforce
+                    component instance.
+                -->
                 <apex:dynamicComponent componentValue="{!table}"></apex:dynamicComponent>
             </apex:pageBlockSection>
         </apex:pageBlock>
